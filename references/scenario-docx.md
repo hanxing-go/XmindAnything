@@ -27,11 +27,13 @@ else:
 
 ## Step 2: Extract content
 
-使用脚本 `/tmp/extract_docx.py`（自动处理 .doc → .docx 转换）：
+使用本 Skill 内置脚本 `scripts/extract_docx.py`（自动处理 .doc → .docx 转换）：
 
 ```bash
-python3 /tmp/extract_docx.py document.docx
+python3 scripts/extract_docx.py document.docx > /tmp/docx_content.txt
 ```
+
+然后 `read /tmp/docx_content.txt` 获取结构化文本。
 
 **提取内容：**
 - 所有段落文本，按 Word 内置样式识别标题层级

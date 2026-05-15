@@ -19,58 +19,13 @@ soffice --headless --convert-to pptx --outdir /tmp input.ppt
 
 ## Step 1: 提取幻灯片内容
 
-用以下 Python 脚本提取每页的**标题、文本框、表格**：
+使用本 Skill 内置脚本 `scripts/extract_pptx.py`：
 
-```python
-from pptx import Presentation
-import sys
-
-prs = Presentation(sys.argv[1])
-
-print(f"SLIDE_COUNT:{len(prs.slides)}")
-
-for i, slide in enumerate(prs.slides, 1):
-    print(f"\n===SLIDE{i}===")
-    img_count = 0
-    
-    for shape in slide.shapes:
-        if shape.has_text_frame:
-            text = shape.text_frame.text.strip()
-            if text:
-                is_title = shape.is_placeholder and shape.placeholder_format.idx == 0
-                prefix = "TITLE:" if is_title else "TEXT:"
-                print(f"{prefix}{text}")
-        
-        if shape.has_table:
-            table = shape.table
-            rows = len(table.rows)
-            cols = len(table.columns)
-            print(f"TABLE:{rows}x{cols}")
-            header = " | ".join(cell.text.strip().replace("\n"," ") for cell in table.rows[0].cells)
-            print(f"TABLE_HEADER:{header}")
-            for r in range(1, min(rows, 11)):
-                row_text = " | ".join(cell.text.strip().replace("\n"," ") for cell in table.rows[r].cells)
-                if row_text.strip():
-                    print(f"TABLE_ROW:{row_text}")
-            if rows > 11:
-                print(f"TABLE_ROW:... (共 {rows - 1} 行数据)")
-        
-        if shape.shape_type == 13:
-            img_count += 1
-        
-        if hasattr(shape, 'chart'):
-            print("CHART:1")
-    
-    if img_count > 0:
-        print(f"IMAGE:{img_count}")
-```
-
-执行：
 ```bash
-python3 /tmp/extract_pptx.py input.pptx > /tmp/pptx_content.txt
+python3 scripts/extract_pptx.py input.pptx > /tmp/pptx_content.txt
 ```
 
----
+然后 `read /tmp/pptx_content.txt` 获取所有幻灯片的结构化文本。
 
 ## Step 2: AI 语义理解与主题重组 ⭐（核心）
 
