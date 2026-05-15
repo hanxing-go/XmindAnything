@@ -62,6 +62,23 @@ The agent handles detection, extraction, structuring, conversion, and uploading.
 | PPTX / PPT | `python-pptx` + LibreOffice (for .ppt) |
 | XLSX | `openpyxl` |
 
+## Tested On (12 real-world cases)
+
+| # | Input | Type | Result |
+|:--:|------|------|:--:|
+| 1 | HeteroMesh README | Markdown | ✅ |
+| 2 | 看雪 Android 加固 | Web URL | ✅ |
+| 3 | 看雪 OLLVM 教程 | Web URL | ✅ |
+| 4 | 看雪 ELF Linker | Web URL | ✅ |
+| 5 | TRELLIS 论文 (26pg) | Scanned PDF (OCR) | ✅ |
+| 6 | 通訳資料 | DOCX | ✅ |
+| 7 | 英语作文模板 | Text PDF | ✅ |
+| 8 | 第２編 音声・音韻 (40pg) | PPT (旧格式) | ✅ |
+| 9 | 年終述职 (8pg, 含表格) | PPTX | ✅ |
+| 10 | Qwen3-TTS 论文 | Text PDF | ✅ |
+| 11 | Multi-Agent Workflow Guide | Markdown | ✅ |
+| 12 | HeteroMesh 项目包 | ZIP → 目录 | ✅ |
+
 ## How It Works
 
 ```
