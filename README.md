@@ -1,18 +1,23 @@
 # 🧠 XmindAnything (v2.2)
 
-> *Convert any content into XMind mind maps — an OpenClaw Skill.*  
-> *将任意内容转为 XMind 思维导图 — 一个 OpenClaw Skill。*
+> *An OpenClaw Skill — convert any content into XMind mind maps.*  
+> *将任意内容转为 XMind 思维导图的 OpenClaw Skill。*
 
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-00d4aa)](https://github.com/openclaw/openclaw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-📖 **Read this in:** [English](README.md) | [中文](README_zh.md)
+<details open>
+<summary>🌐 Language / 语言</summary>
 
----
+Click to expand your preferred language below:
+
+<details open>
+<summary>🇬🇧 English</summary>
+<br>
 
 ## What It Does
 
-**Send any content to your AI agent → get an `.xmind` mind map back with a download link.**
+Send any content to your AI agent → get an `.xmind` mind map back with a download link.
 
 | Input | Output |
 |-------|--------|
@@ -68,3 +73,72 @@ See [SKILL.md](SKILL.md) for the full agent workflow and [references/](reference
 ## License
 
 MIT
+
+</details>
+
+<details>
+<summary>🇨🇳 中文</summary>
+<br>
+
+## 功能简介
+
+把任意内容发给 AI → 得到一个 `.xmind` 思维导图 + 下载链接。
+
+| 输入 | 输出 |
+|-------|--------|
+| 📄 PDF（文字版/扫描版） | 结构化脑图 |
+| 📝 Markdown 文档 | 按标题层级展开 |
+| 🌐 网页（博客/论坛/教程） | 语义脑图 |
+| 📎 Word (.docx / .doc) | 标题 + 段落 + 表格 |
+| 📊 PowerPoint (.pptx / .ppt) | 语义分组的幻灯片脑图 |
+| 🏗️ GitHub 项目 | 架构总览 |
+| 📂 目录（混合文件） | 主题归纳 |
+| 💻 源码 (.py, .java, .go 等) | 模块/类签名图 |
+| 📋 YAML / JSON / CSV / TOML 等 | 结构图 |
+
+## 快速开始
+
+```bash
+npm install -g xmindmark
+```
+
+然后对 AI 说：
+
+```
+"把这个论文转成思维导图"
+"把这篇博客可视化"
+"把 README 转成 XMind"
+"把这个学习资料目录整理成脑图"
+"分析一下这个 GitHub 项目的架构"
+"帮我把这个 PPT 转成思维导图"
+```
+
+AI 会自动完成：识别类型 → 提取内容 → 语义结构化 → 转换 → 上传 → 返回下载链接。
+
+## 环境依赖
+
+| 输入类型 | 依赖 |
+|------------|-----------|
+| 全部 | `xmindmark` (npm) |
+| Markdown / 网页 / 源码 / 配置文件 | 无 |
+| 文字 PDF | `poppler-utils` (pdftotext) |
+| 扫描版 PDF | `tesseract-ocr` + `poppler-utils` |
+| DOCX / DOC | `python-docx` + LibreOffice (.doc 转换用) |
+| PPTX / PPT | `python-pptx` + LibreOffice (.ppt 转换用) |
+| XLSX | `openpyxl` |
+
+## 工作流程
+
+```
+输入 → 识别类型 → 提取内容 → AI 语义结构化 → xmindmark 转换 → 上传 → 下载链接
+```
+
+详见 [SKILL.md](SKILL.md) 和 [references/](references/)。
+
+## License
+
+MIT
+
+</details>
+
+</details>
