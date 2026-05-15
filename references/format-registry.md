@@ -10,11 +10,11 @@
 
 | 扩展名 | 提取方法 | 工具 |
 |--------|----------|------|
-| .yaml / .yml | 读文本 → 提取顶层 key + 嵌套结构 | 无 |
-| .json | 读文本 → 提取顶层 key + 嵌套结构 | 无 |
-| .toml | 读文本 → 提取 section 和 key | 无 |
-| .xml | 读文本 → 提取主要标签名（第一层） | 无 |
-| .csv / .tsv | 读文本 → 列名 + 行数统计 | 无 |
+| .csv / .tsv | `python3 scripts/extract_data.py` → 列名 + 行数 | python3 |
+| .yaml / .yml | `python3 scripts/extract_data.py` → 顶层 key + 嵌套结构 | python3 |
+| .json | `python3 scripts/extract_data.py` → 顶层 key + 嵌套结构 | python3 |
+| .toml | `python3 scripts/extract_data.py` → section 和 key | python3 |
+| .xml | `python3 scripts/extract_data.py` → 主要标签树 | python3 |
 | .rst | 读文本 → 提取标题 (===, ---, ~~~) | 无 |
 | .tex | 读文本 → 提取 \section, \subsection | 无 |
 | .html | web_fetch/读文件 → 提取 h1-h4 | 无 |
@@ -34,17 +34,12 @@
 
 | 扩展名 | 提取方法 | 工具 |
 |--------|----------|------|
-| .docx | `python3 /tmp/extract_docx.py` → 标题/段落/表格 | python-docx |
+| .docx | `python3 scripts/extract_docx.py` → 标题/段落/表格 | python-docx |
 | .doc  | `soffice --headless --convert-to docx` → 同上 | python-docx + LibreOffice |
-| .pptx | `python3 /tmp/extract_pptx.py` → 每页标题 + 文本框 + 表格 | python-pptx |
+| .pptx | `python3 scripts/extract_pptx.py` → 每页标题 + 文本框 + 表格 | python-pptx |
 | .ppt  | `soffice --headless --convert-to pptx` → 同上 | python-pptx + LibreOffice |
-
-### 二进制/混合类（需额外 Python 库）
-
-| 扩展名 | 提取方法 | 工具 |
-|--------|----------|------|
-| .ipynb | `python3 -c "import json;..."` → cell 提取 | python3 |
-| .xlsx | `python3 -c "import openpyxl;..."` → Sheet 名 + 表头 | openpyxl |
+| .xlsx | `python3 scripts/extract_xlsx.py` → Sheet 名 + 表头 + 数据 | openpyxl |
+| .ipynb | `python3 scripts/extract_ipynb.py` → cell 结构 | python3 |
 | .epub | `unzip -p toc.ncx` → 提取目录结构 | unzip |
 
 ---
