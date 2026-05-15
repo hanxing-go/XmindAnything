@@ -60,6 +60,22 @@
 - **C/C++**: `r'(struct|class)\s+(\w+)|(\w+\s+\w+\s*\([^)]*\)\s*\{)'`
 - **Rust**: `r'(struct|enum|fn|trait)\s+(\w+)'`
 
+### 归档类（解压后走目录场景）
+
+| 扩展名 | 提取方法 | 工具 |
+|--------|----------|------|
+| .zip / .tar / .gz / .tgz | `python3 scripts/extract_archive.py` → 解压 → 目录场景 | python3 (标准库) |
+| .tar.gz / .tar.bz2 / .tar.xz | 同上 | python3 (标准库) |
+| .7z | `python3 scripts/extract_archive.py`（需 `7z` CLI） | python3 + p7zip |
+| .rar | `python3 scripts/extract_archive.py`（需 `unrar` CLI） | python3 + unrar |
+
+### 项目类
+
+| 类型 | 提取方法 | 工具 |
+|--------|----------|------|
+| GitHub URL | `python3 scripts/clone_project.py <url>` | git + python3 |
+| 本地目录 | 直接 `find` + `tree` 分析 | 无 |
+
 ### 二进制类
 需额外 Python 库。首次使用时安装并在输出中提醒用户：
 ```bash
@@ -71,7 +87,6 @@ pip install --break-system-packages python-pptx openpyxl python-docx
 - 图片: .png/.jpg/.jpeg/.gif/.webp/.svg/.bmp
 - 视频: .mp4/.avi/.mov/.mkv/.webm
 - 音频: .mp3/.wav/.ogg/.flac
-- 压缩包: .zip/.tar/.gz/.rar/.7z
 - 二进制库: .so/.o/.a/.dll/.exe/.class/.pyc
 - 特殊目录: .git/ node_modules/ __pycache__/ venv/ .venv/
 

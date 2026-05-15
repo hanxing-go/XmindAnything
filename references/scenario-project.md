@@ -10,7 +10,7 @@
 
 ```bash
 # GitHub URL → 浅克隆
-git clone --depth 1 <url> /tmp/proj 2>&1
+python3 scripts/clone_project.py https://github.com/owner/repo 2>&1
 
 # 本地路径 → 直接使用
 cp -r /path/to/project /tmp/proj
