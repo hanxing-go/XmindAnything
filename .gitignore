@@ -5,6 +5,13 @@
 # Test outputs
 tests/output/
 
+# Large test assets (local dev only)
+tests/*.pdf
+tests/*.ppt
+tests/*.pptx
+tests/*.docx
+tests/*.zip
+
 # Backup files
 *.bak
 
