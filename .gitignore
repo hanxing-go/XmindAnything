@@ -1,0 +1,16 @@
+# XMind output files (generated)
+*.xmind
+*.xmindmark
+
+# Test outputs
+tests/output/
+
+# Backup files
+*.bak
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
